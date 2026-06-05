@@ -50,12 +50,10 @@ function renderTasks() {
 
         let html = `<strong>${task.name}</strong><br>`;
 
-        // Countdown
         if (task.deadline) {
             html += `<div id="countdown-${task.id}"></div>`;
         }
 
-        // Timer
         if (task.duration) {
             html += `
                  <div>
@@ -67,10 +65,7 @@ function renderTasks() {
         <button onclick="completeTask(${task.id})">Finish!</button>
     </div>
             `;
-        }
-
-        // Complete button
-       
+        }       
 
         div.innerHTML = html;
         list.appendChild(div);
@@ -215,9 +210,7 @@ function renderGrid() {
 }
 
 
-// ----------------------------
-// Settings: toggle grid + color
-// ----------------------------
+//Settings
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -234,22 +227,18 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("monthover").style.display = "none";
     }
 
-    // Open/close settings panel
     document.getElementById("settings-btn").addEventListener("click", () => {
         document.getElementById("settings-panel").classList.toggle("hidden");
     });
 
-    // Set checkbox state
     document.getElementById("toggle-grid").checked = showGrid;
 
-    // Toggle grid visibility
     document.getElementById("toggle-grid").addEventListener("change", (e) => {
         showGrid = e.target.checked;
         localStorage.setItem("showGrid", JSON.stringify(showGrid));
         renderGrid();
     });
 
-    // Set initial color picker value
     document.getElementById("grid-color").value = gridColor;
 
     // Change grid color

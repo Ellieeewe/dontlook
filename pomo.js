@@ -1,5 +1,5 @@
-let remainingSeconds = 0;
-let intervalId = null;
+let endTime = null;
+let running = false;
 
 const input = document.getElementById("minutes-input");
 const display = document.getElementById("time-display");
@@ -11,41 +11,52 @@ function formatTime(sec) {
 }
 
 function updateDisplay() {
-  display.textContent = formatTime(remainingSeconds);
+  if (!running || endTime === null) return;
+
+  const now = Date.now();
+  const remaining = Math.max(0, Math.floor((endTime - now) / 1000));
+
+  display.textContent = formatTime(remaining);
+
+  if (remaining === 0) {
+    running = false;
+    document.getElementById("endsesh").play();
+  }
 }
 
-document.getElementById("start-btn").addEventListener("click", () => {
-  if (intervalId !== null) return;
-
-  if (remainingSeconds === 0) {
-    const mins = Number(input.value);
-    if (mins > 0) remainingSeconds = mins * 60;
-  }
-
-  intervalId = setInterval(() => {
-    if (remainingSeconds > 0) {
-      remainingSeconds--;
-      updateDisplay();
-    } else {
-      clearInterval(intervalId);
-      intervalId = null;
-      document.getElementById("endsesh").play();
-    }
-
-   
-  }, 1000);
-});
-
-document.getElementById("pause-btn").addEventListener("click", () => {
-  clearInterval(intervalId);
-  intervalId = null;
-});
-
-document.getElementById("reset-btn").addEventListener("click", () => {
-  clearInterval(intervalId);
-  intervalId = null;
-  remainingSeconds = 0;
+document.addEventListener("visibilitychange", () => {
   updateDisplay();
 });
 
-updateDisplay();
+// Update every second ONLY for UI smoothness
+setInterval(updateDisplay, 1000);
+
+// BUTTONS
+
+document.getElementById("start-btn").addEventListener("click", () => {
+  if (!running) {
+    let mins = Number(input.value);
+    if (mins <= 0) return;
+
+    const totalSeconds = mins * 60;
+    endTime = Date.now() + totalSeconds * 1000;
+    running = true;
+    updateDisplay();
+  }
+});
+
+document.getElementById("pause-btn").addEventListener("click", () => {
+  if (running) {
+    const now = Date.now();
+    const remaining = Math.max(0, Math.floor((endTime - now) / 1000));
+    endTime = null;
+    running = false;
+    display.textContent = formatTime(remaining);
+  }
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  running = false;
+  endTime = null;
+  display.textContent = "00:00";
+});

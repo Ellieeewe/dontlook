@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Pomodoro</title>
+  <link rel="stylesheet" href="pomo.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifestpomo.json">
+<meta name="theme-color" content="#111827">
+</head>
+<body>
+
+<h1 id="main"><a href="main.html">Tasuku2</a></h1>
+
+<audio id="endsesh" src="/u_7t06dkcgzk-japanese-school-bell-sound-4889524.mp3"></audio>
+
+
+  <div class="container">
+    <h1>Pomodoro Timer</h1>
+
+    <input id="minutes-input" type="number" min="1" placeholder="Minutes:">
+
+    <div id="time-display" class="time">00:00</div>
+
+    <div class="buttons">
+      <button id="start-btn">Start</button>
+      <button id="pause-btn">Pause</button>
+      <button id="reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script src="pomo.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+
+/*start a pomodor session*/
+    
+:root {
+    --grid-color: #4caf50;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: pink;
+    cursor: crosshair;
+}
+
+h1, label {
+text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+}
+
+#background-rect {
+    position: fixed;
+    top: 0;
+    left: -30rem;
+    transform: rotate(-30deg);
+    width: 200%;
+    height: 70%;
+    background: black;
+    z-index: -1;
+}
+
+#tasuk {
+     font-family: Cantarell;
+    font-size: 24px;
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+#pomo {
+     font-family: Cantarell;
+    position: absolute;
+    font-size: 24px;
+    left: 200px;
+    top: 10px;
+}
+
+
+#head2 {
+        text-align: center;
+    }
+
+
+#head {
+ font-family: Cantarell;
+ font-size: 60px;
+ color: black;
+}
+
+#settings-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+#settings-btn {
+    font-family: Cantarell;
+    border: none;
+    color: white;
+     right: 40px;
+    background: black;
+    font-size: 24px;
+   cursor:crosshair;
+  }
+
+#settings-btn:hover {
+    color:pink;
+}
+
+
+
+#settings-panel {
+    position: absolute;
+    gap: 25px;
+    top: 45px;   /* below the button */
+    right: 10px;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#settings-panel:not(.hidden) {
+    display: flex;
+}
+
+
+
+#monthover { 
+    color: white;
+    text-align: center;
+}
+
+#new-task {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    
+}
+
+#task-list {
+    margin-bottom: 30px;
+}
+
+.task {
+    border: 1px solid #ebeaea;
+    background-color: rgb(236, 236, 236);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.timer-controls button {
+    margin-right: 5px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(7, 30px);
+    gap: 6px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.day {
+    width: 30px;
+    height: 30px;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.day.completed {
+     background-color: var(--grid-color);
+}
+
+#cat-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+.hidden {
+    display: none;
+}
+
+#cat-image {
+    width: 100%;
+    height: 600px;
+    border-radius: 8px;
+    margin: 10px 0;
+}

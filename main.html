@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifestpomo.json">
+</head>
+<body>
+
+<h1 id="tasuk">Tasuku2</h1>
+<h1 id="pomo"><a href="pomo.html">Pomodoro timer</a></h1>
+
+
+<header id="head2">
+    <h1 id="head">Tasuku2</h1>
+</header>
+<div id="background-rect"></div>
+
+<div id="settings-container">
+    <button id="settings-btn"> Settings</button>
+</div>
+
+<div id="settings-panel" class="hidden">
+    <label>
+        <input type="checkbox" id="toggle-grid">
+        Show the grid.
+    </label>
+    <label>
+    Color of grid:
+    <input type="color" id="grid-color">
+</label>
+    <button id="clear-grid">Delete saved data of grid.</button>
+
+</div>
+
+
+<div id="new-task">
+    <input id="task-name" placeholder="Task name">
+
+    <label>
+        Deadline:
+        <input id="task-deadline" type="datetime-local">
+    </label>
+
+    <label>
+        Timer:
+        <input id="task-duration" type="number" min="1">
+    </label>
+
+    <button id="add-task">Add task!</button>
+</div>
+
+<h2 id="showtask">Tasks</h2>
+<div id="task-list"></div>
+
+<h2 id="monthover">Monthly overview</h2>
+<div id="grid"></div>
+
+<div id="cat-modal" class="hidden">
+    <h2>Neko!</h2>
+    <img id="cat-image" src="">
+    <button id="close-cat">Close</button>
+</div>
+
+<script src="script.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+
+</body>
+</html>
